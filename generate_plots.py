@@ -95,7 +95,6 @@ plt.figure(figsize=(6,6))
 plt.pie(x=df['location'].value_counts(), labels= df['location'].value_counts().index , 
         autopct='%.0f%%')
 plt.title('Percentage of Taxpayers from different Locations')
-plt.show()
 
 #save this plot as a png file
 plt.savefig('figures/location_breakdown.png', dpi=300, bbox_inches='tight')
@@ -123,7 +122,6 @@ plt.title('Forecasted Tax Amount for the next 3 years')
 plt.xlabel('Year')
 plt.ylabel('Total Tax')
 plt.ylim(0)
-plt.show()
 
 #save this plot as a png file
 plt.savefig('figures/forecasted_tax_amount.png', dpi=300, bbox_inches='tight')
