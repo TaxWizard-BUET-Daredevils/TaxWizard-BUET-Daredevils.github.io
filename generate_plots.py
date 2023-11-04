@@ -99,3 +99,31 @@ plt.show()
 
 #save this plot as a png file
 plt.savefig('figures/location_breakdown.png', dpi=300, bbox_inches='tight')
+
+
+# ML 
+from sklearn.linear_model import LinearRegression
+
+total_tax_by_year = df.groupby('year')['tax_amount'].sum()
+
+model = LinearRegression()
+
+X_train = total_tax_by_year.index.values.reshape(-1,1)
+y_train = total_tax_by_year.values
+model.fit(X_train, y_train)
+
+X_pred = np.array([2022, 2023, 2024]).reshape(-1,1)
+Y_pred = model.predict(X_pred)
+
+# scatter plot of X_train and y_train
+plt.figure(figsize=(12,5))
+plt.scatter(X_train, y_train, color='blue')
+plt.scatter(X_pred, Y_pred, color='red')
+plt.title('Forecasted Tax Amount for the next 3 years')
+plt.xlabel('Year')
+plt.ylabel('Total Tax')
+plt.ylim(0)
+plt.show()
+
+#save this plot as a png file
+plt.savefig('figures/forecasted_tax_amount.png', dpi=300, bbox_inches='tight')
