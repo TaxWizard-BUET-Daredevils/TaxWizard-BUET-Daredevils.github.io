@@ -104,6 +104,7 @@ plt.savefig('figures/location_breakdown.png', dpi=300, bbox_inches='tight')
 from sklearn.linear_model import LinearRegression
 
 total_tax_by_year = df.groupby('year')['tax_amount'].sum()
+total_tax_by_year = total_tax_by_year[total_tax_by_year.index <= 2021]
 
 model = LinearRegression()
 
